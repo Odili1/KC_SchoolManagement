@@ -1,0 +1,14 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/KC-SchoolManagement/obj
+/KC-SchoolManagement/bin/Debug/net8.0
+/KC-SchoolManagement/Properties/launchSettings.json
+/KC-SchoolManagement.Domain/bin/Debug/net8.0
+/KC-SchoolManagement.Domain/obj
+/KC-SchoolManagement.Infrastructure/bin/Debug/net8.0
+/KC-SchoolManagement.Infrastructure/obj
+/KC-SchoolManagement.Persistence/bin/Debug/net8.0
+/KC-SchoolManagement.Persistence/obj

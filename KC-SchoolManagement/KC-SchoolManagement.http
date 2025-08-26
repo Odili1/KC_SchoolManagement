@@ -1,0 +1,6 @@
+@KC_SchoolManagement_HostAddress = http://localhost:5129
+
+GET {{KC_SchoolManagement_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
