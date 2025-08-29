@@ -53,9 +53,42 @@ namespace KC_SchoolManagement.Controllers
 
 
         // Update
-        //[HttpPut]
-        //public async 
+        [HttpPost]
+        public async Task<ActionResult> UpdateStudent(int id, Student updateStudent)
+        {
+            //Check if student exists
+            var student = await _context.Students.FindAsync(id);
+
+            if (student == null)
+            {
+                return NotFound(new { message = $"Student with id {id} does not exist" });
+            }
+
+            student.FirstName = updateStudent.FirstName;
+            student.LastName = updateStudent.LastName;
+            student.DateOfBirth = updateStudent.DateOfBirth;
+            student.EnrollmentYear = updateStudent.EnrollmentYear;
+
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
 
         //Delete
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteStudent(int id)
+        {
+            var student = await _context.Students.FindAsync(id);
+
+            if (student == null)
+            {
+                return NotFound(new { message = $"Student with id {id} does not exist" });
+            }
+
+            _context.Students.Remove(student);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
     }
 }

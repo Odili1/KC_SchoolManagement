@@ -53,7 +53,41 @@ namespace KC_SchoolManagement.Controllers
 
 
         // Update
+        [HttpPost]
+        public async Task<ActionResult> UpdateTeacher(int id, Teacher updateTeacher)
+        {
+            //Check if teacher exists
+            var teacher = await _context.Teachers.FindAsync(id);
+
+            if (teacher == null)
+            {
+                return NotFound(new { message = $"Teacher with id {id} does not exist" });
+            }
+
+            teacher.FirstName = updateTeacher.FirstName;
+            teacher.LastName = updateTeacher.LastName;
+            teacher.Age = updateTeacher.Age;
+
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
 
         //Delete
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteTeacher(int id)
+        {
+            var teacher = await _context.Teachers.FindAsync(id);
+
+            if (teacher == null)
+            {
+                return NotFound(new { message = $"Teacher with id {id} does not exist" });
+            }
+
+            _context.Teachers.Remove(teacher);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
     }
 }
