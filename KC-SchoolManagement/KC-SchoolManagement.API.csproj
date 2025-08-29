@@ -16,10 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\KC-SchoolManagement.Persistence\KC-SchoolManagement.Persistence.csproj" />
   </ItemGroup>
 

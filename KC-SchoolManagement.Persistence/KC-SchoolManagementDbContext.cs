@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using KC_SchoolManagement.Domain;
+﻿using KC_SchoolManagement.Domain;
 using Microsoft.EntityFrameworkCore;
 
 namespace KC_SchoolManagement.Persistence
 {
     public class KC_SchoolManagementDbContext : DbContext
     {
-        public KC_SchoolManagementDbContext(DbContextOptions<KC_SchoolManagementDbContext> options) : base(options) 
+        public KC_SchoolManagementDbContext(DbContextOptions<KC_SchoolManagementDbContext> options) : base(options)
         {
         }
 
@@ -19,9 +14,9 @@ namespace KC_SchoolManagement.Persistence
             base.OnModelCreating(modelBuilder);
         }
 
-        DbSet<Student> Students { get; set; }
-        DbSet<Teacher> Teachers { get; set; }
-        DbSet<Subject> Subjects { get; set; }
-        DbSet<Class> Class { get; set; }
+        public DbSet<Student> Students { get; set; }
+        public DbSet<Teacher> Teachers { get; set; }
+        public DbSet<Subject> Subjects { get; set; }
+        public DbSet<Class> Class { get; set; }
     }
 }
