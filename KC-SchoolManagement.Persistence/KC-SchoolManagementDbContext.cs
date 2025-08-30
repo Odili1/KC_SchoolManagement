@@ -14,6 +14,7 @@ namespace KC_SchoolManagement.Persistence
             base.OnModelCreating(modelBuilder);
         }
 
+        public DbSet<Admin> Admins { get; set; }
         public DbSet<Student> Students { get; set; }
         public DbSet<Teacher> Teachers { get; set; }
         public DbSet<Subject> Subjects { get; set; }
