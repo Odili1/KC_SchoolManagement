@@ -1,5 +1,6 @@
 ﻿using KC_SchoolManagement.Domain;
 using KC_SchoolManagement.Persistence;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,6 +18,7 @@ namespace KC_SchoolManagement.Controllers
 
         // Create
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> CreateSubject(Subject subject)
         {
             if (!ModelState.IsValid)
@@ -53,6 +55,8 @@ namespace KC_SchoolManagement.Controllers
 
         // Update
         [HttpPost]
+        [Authorize(Roles = "Teacher")]
+
         public async Task<ActionResult> UpdateSubject(int id, Subject updateSubject)
         {
             //Check if subject exists
@@ -73,6 +77,8 @@ namespace KC_SchoolManagement.Controllers
 
         //Delete
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
+
         public async Task<ActionResult> DeleteSubject(int id)
         {
             var subject = await _context.Subjects.FindAsync(id);

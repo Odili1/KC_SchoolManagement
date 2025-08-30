@@ -1,5 +1,6 @@
 ﻿using KC_SchoolManagement.Domain;
 using KC_SchoolManagement.Persistence;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,6 +18,8 @@ namespace KC_SchoolManagement.Controllers
 
         // Create
         [HttpPost]
+        [Authorize(Roles = "Admin")]
+
         public async Task<ActionResult> CreateClass(Class classParam)
         {
             if (!ModelState.IsValid)
@@ -54,6 +57,8 @@ namespace KC_SchoolManagement.Controllers
 
         // Update
         [HttpPost]
+        [Authorize(Roles = "Admin")]
+
         public async Task<ActionResult> UpdateClass(int id, Class updateClass)
         {
             //Check if Class exists
@@ -74,6 +79,8 @@ namespace KC_SchoolManagement.Controllers
 
         //Delete
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
+
         public async Task<ActionResult> DeleteClass(int id)
         {
             var dbClass = await _context.Class.FindAsync(id);
